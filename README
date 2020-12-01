@@ -1,0 +1,26 @@
+Homework 2. Flask.
+-----------------
+
+1. Return information from requirements.txt
+   PATH: /requirements/ 
+  
+2. Display  100 or a specified number of generated users and their emails.
+   Ex.: 'Dmytro aasdasda@mail.com'.
+   PATH: /generate-users/<int:users_number>
+   For generating names: https://pypi.org/project/Faker/ 
+
+3. Return mean height and weight from hw.csv.
+   Ex.: Mean height: 192cm; Mean weight: 85kg.
+   PATH: /mean/
+   File hw.csv in folder /mean/files/
+
+4. Display number of cosmonauts at the moment.
+   Use http://api.open-notify.org/astros.json, https://pypi.org/project/requests/
+   PATH: /space/
+
+-----------------
+
+Do all tasks in the separeted branch, create pull request and then merge with main.
+
+-----------------
+
