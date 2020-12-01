@@ -44,5 +44,17 @@ def generate_users(users_number: int = 100) -> 'html':
                            )
 
 
+# Task 3. Return mean height and weight from hw.csv.
+@app.route('/mean/')
+def get_main_height_weight() -> 'html':
+    with open('requirements.txt') as r:
+        requirements = r.readlines()
+    return render_template('mean.html',
+                           the_title='Mean height and weight from hw.csv.',
+                           content=requirements,
+                           the_style_url='../static/style.css'
+                           )
+
+
 if __name__ == '__main__':
     app.run(debug=True)
