@@ -10,7 +10,7 @@ def hello_world():
 
 
 @app.route('/requirements/')
-def get_requirements():
+def get_requirements() -> str:
     with open('requirements.txt') as r:
         requirements = r.readlines()
         requirements = '; '.join([i.strip() for i in requirements])
