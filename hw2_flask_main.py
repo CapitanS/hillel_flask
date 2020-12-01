@@ -30,13 +30,15 @@ def get_requirements() -> 'html':
 # Task 2. Display generated users and their emails.
 @app.route('/generate-users/')
 @app.route('/generate-users/<int:users_number>')
-def generate_users(users_number=100) -> 'html':
-    users_with_emails = {
-        'Bob': 'bob@gmail.com',
-        'David': 'david@gmail.com'
-    }
+def generate_users(users_number: int = 100) -> 'html':
+    users_with_emails = {}
+    fake = Faker(['en_US'])
+    for _ in range(users_number):
+        user = fake.name()
+        email = user.lower().replace(' ', '') + '@gmail.com'
+        users_with_emails[user] = email
     return render_template('generate_users.html',
-                           the_title=f'Display {users_number} user and their emails',
+                           the_title=f'Display {users_number} users and their emails',
                            users_dict=users_with_emails,
                            the_style_url='../static/style.css'
                            )

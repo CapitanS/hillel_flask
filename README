@@ -18,9 +18,11 @@ Homework 2. Flask.
    Use http://api.open-notify.org/astros.json, https://pypi.org/project/requests/
    PATH: /space/
 
+!!! Do all tasks in the separated branch, create pull request and then merge with main.
+
 -----------------
 
-Do all tasks in the separeted branch, create pull request and then merge with main.
+
 
 -----------------
 

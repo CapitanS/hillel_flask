@@ -10,3 +10,6 @@ p {
     font-family: Arial, san-serif;
     text-transform: uppercase;
 }
+dt {
+    margin-top: 10px;
+}
