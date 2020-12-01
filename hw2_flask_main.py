@@ -20,9 +20,8 @@ def hello_world() -> 'html':
 def get_requirements() -> 'html':
     with open('requirements.txt') as r:
         requirements = r.readlines()
-        requirements = '; '.join([i.strip() for i in requirements])
     return render_template('requirements.html',
-                           the_title='Requirements',
+                           the_title='Requirements for this project',
                            content=requirements,
                            the_style_url='../static/style.css'
                            )
