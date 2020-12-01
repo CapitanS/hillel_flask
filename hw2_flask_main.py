@@ -9,23 +9,29 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index.html')
 def hello_world() -> 'html':
-    return render_template('entry.html', the_title='Flask welcomes')
+    return render_template('entry.html',
+                           the_title='Flask welcomes',
+                           the_style_url='static/style.css'
+                           )
 
 
 # Task 1. Return information from requirements.txt
 @app.route('/requirements/')
-def get_requirements() -> str:
+def get_requirements() -> 'html':
     with open('requirements.txt') as r:
         requirements = r.readlines()
         requirements = '; '.join([i.strip() for i in requirements])
-    return requirements
+    return render_template('requirements.html',
+                           the_title='Requirements',
+                           content=requirements,
+                           the_style_url='../static/style.css'
+                           )
 
 
 # Task 2. Display generated users and their emails.
 @app.route('/genarate-users/<int:users_number>')
 def generate_users(users_number):
     pass
-
 
 
 if __name__ == '__main__':

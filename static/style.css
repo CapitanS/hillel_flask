@@ -1,3 +1,12 @@
 h2 {
-    color: red;
+    color: black;
+    text-align: center;
+    font-size: 32px;
+    font-family: Arial, san-serif;
+    text-decoration: underline;
+}
+p {
+    font-size: 18px;
+    font-family: Arial, san-serif;
+    text-transform: uppercase;
 }
