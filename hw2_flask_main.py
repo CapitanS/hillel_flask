@@ -28,9 +28,18 @@ def get_requirements() -> 'html':
 
 
 # Task 2. Display generated users and their emails.
-@app.route('/genarate-users/<int:users_number>')
-def generate_users(users_number):
-    pass
+@app.route('/generate-users/')
+@app.route('/generate-users/<int:users_number>')
+def generate_users(users_number=100) -> 'html':
+    users_with_emails = {
+        'Bob': 'bob@gmail.com',
+        'David': 'david@gmail.com'
+    }
+    return render_template('generate_users.html',
+                           the_title=f'Display {users_number} user and their emails',
+                           users_dict=users_with_emails,
+                           the_style_url='../static/style.css'
+                           )
 
 
 if __name__ == '__main__':
