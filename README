@@ -22,6 +22,18 @@ Homework 2. Flask.
 
 -----------------
 
+hw2_flask_maim.py - web application based on Flask
+
+Folders:
+files/ for hw.csv
+static/ for style.css
+templates/ for html templates
+         base.html - base templates
+         entry.html - main page
+         requirements.html - templates for task 1.
+         generate_users.html - templates for task 2.
+         mean.html - templates for task 3.
+         space.html - templates for task 4.
 
 
 -----------------
