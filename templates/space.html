@@ -2,11 +2,8 @@
 
 {% block body %}
 <h2>{{ the_title }}</h2>
-<dl>
-{% for user, email in users_dict.items() %}
-    <dt>{{ user|e }}</dt>
-    <dd>{{ email|e }}</dd>
-{% endfor %}
-</dl>
+<ul>
+  In the space: <b>{{ number_of_cosmonauts }}</b> cosmonauts.
+</ul>
 <p><a href="/">Go Back</a></p>
 {% endblock %}

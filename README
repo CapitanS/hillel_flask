@@ -14,7 +14,7 @@ Homework 2. Flask.
    PATH: /mean/
    File hw.csv in folder files/
 
-4. Display number of cosmonauts at the moment.
+4. Display number of cosmonauts in the space at the moment.
    Use http://api.open-notify.org/astros.json, https://pypi.org/project/requests/
    PATH: /space/
 

@@ -1,8 +1,10 @@
+import csv
+import requests
 from flask import Flask
 from faker import Faker
 from flask import render_template
 from numpy import mean
-import csv
+
 
 app = Flask(__name__)
 
@@ -67,10 +69,16 @@ def get_mean_height_weight() -> 'html':
                            )
 
 
-# Task 4. Display number of cosmonauts at the monent.
+# Task 4. Display number of cosmonauts in the space at the moment.
 @app.route('/space/')
 def cosmonauts_in_the_space() -> 'html':
-    pass
+    r = requests.get('http://api.open-notify.org/astros.json')
+    number_of_cosmonauts = r.json()['number']
+    return render_template('space.html',
+                           the_title='Number of cosmonauts in the space at the moment.',
+                           number_of_cosmonauts=number_of_cosmonauts,
+                           the_style_url='../static/style.css'
+                           )
 
 
 if __name__ == '__main__':
