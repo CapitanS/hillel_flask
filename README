@@ -12,15 +12,29 @@ Homework 2. Flask.
 3. Return mean height and weight from hw.csv.
    Ex.: Mean height: 192cm; Mean weight: 85kg.
    PATH: /mean/
-   File hw.csv in folder /mean/files/
+   File hw.csv in folder files/
 
-4. Display number of cosmonauts at the moment.
+4. Display number of cosmonauts in the space at the moment.
    Use http://api.open-notify.org/astros.json, https://pypi.org/project/requests/
    PATH: /space/
 
+!!! Do all tasks in the separated branch, create pull request and then merge with main.
+
 -----------------
 
-Do all tasks in the separeted branch, create pull request and then merge with main.
+hw2_flask_maim.py - web application based on Flask
+
+Folders:
+files/ for hw.csv
+static/ for style.css
+templates/ for html templates
+         base.html - base templates
+         entry.html - main page
+         requirements.html - templates for task 1.
+         generate_users.html - templates for task 2.
+         mean.html - templates for task 3.
+         space.html - templates for task 4.
+
 
 -----------------
 
