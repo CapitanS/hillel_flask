@@ -67,5 +67,11 @@ def get_mean_height_weight() -> 'html':
                            )
 
 
+# Task 4. Display number of cosmonauts at the monent.
+@app.route('/space/')
+def cosmonauts_in_the_space() -> 'html':
+    pass
+
+
 if __name__ == '__main__':
     app.run(debug=True)
