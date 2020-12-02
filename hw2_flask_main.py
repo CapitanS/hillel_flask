@@ -1,6 +1,8 @@
 from flask import Flask
 from faker import Faker
 from flask import render_template
+from numpy import mean
+import csv
 
 app = Flask(__name__)
 
@@ -38,7 +40,7 @@ def generate_users(users_number: int = 100) -> 'html':
         email = user.lower().replace(' ', '') + '@gmail.com'
         users_with_emails[user] = email
     return render_template('generate_users.html',
-                           the_title=f'Display {users_number} users and their emails',
+                           the_title=f'{users_number} users and their emails',
                            users_dict=users_with_emails,
                            the_style_url='../static/style.css'
                            )
@@ -46,12 +48,21 @@ def generate_users(users_number: int = 100) -> 'html':
 
 # Task 3. Return mean height and weight from hw.csv.
 @app.route('/mean/')
-def get_main_height_weight() -> 'html':
-    with open('requirements.txt') as r:
-        requirements = r.readlines()
+def get_mean_height_weight() -> 'html':
+    with open('files/hw.csv', newline='') as hw_csvfile:
+        hw_reader = csv.DictReader(hw_csvfile)
+        height_str = []
+        weight_str = []
+        index_col, height_col, weight_col = hw_reader.fieldnames
+        for i in hw_reader:
+            height_str.append(float(i[height_col]))
+            weight_str.append(float(i[weight_col]))
+        mean_height_m = '{:.2f}'.format(mean(height_str) * 0.0254)
+        mean_weight_kg = '{:.2f}'.format(mean(weight_str) * 0.453592)
     return render_template('mean.html',
                            the_title='Mean height and weight from hw.csv.',
-                           content=requirements,
+                           mean_height=mean_height_m,
+                           mean_weight=mean_weight_kg,
                            the_style_url='../static/style.css'
                            )
 
