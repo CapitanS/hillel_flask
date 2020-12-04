@@ -108,17 +108,24 @@ def get_number_of_tracks() -> 'html':
 
 # Task 3. Display compositions with specified genre from table 'tracks' of db_hw3.sqlite3.
 @app.route('/tracks/<genre>')
-def get_genre_compositions(genre) -> 'html':
-    genre_composition = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
-    print(genre_composition)
+def get_genre_tracks(genre) -> 'html':
+    genre_tracks = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
     return render_template('tracks_genre.html',
                            the_title=f'{genre} compositions',
-                           genre_composition=genre_composition,
+                           genre_tracks=genre_tracks,
                            the_style_url='../static/style.css'
                            )
 
 
-
+# Task 4. Display compositions and their length from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks-sec/')
+def get_tracks_and_length() -> 'html':
+    tracks_and_length = exec_query('SELECT TracksName, TrackLength FROM tracks')
+    return render_template('tracks_sec.html',
+                           the_title='Compositions and their length',
+                           tracks_and_length=tracks_and_length,
+                           the_style_url='../static/style.css'
+                           )
 
 
 
