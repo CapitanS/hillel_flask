@@ -1,0 +1,48 @@
+Homework 3. SQLite.
+-------------------
+Preparation:
+   Create database 'db_hw3.sqlite3'.
+   Create table 'customers' in database 'db_hw3.sqlite3'.
+   Columns 'id', 'FirstName', 'LastName'.
+   Add few rows with customers in this table.
+   Customers must be with unique names and the same.
+
+   Create table 'tracks' in database 'db_hw3.sqlite3'.
+   Columns 'id', 'TracksName', 'genre', 'TrackLength' (in sec.).
+   Add few rows with existing compositions in this table.
+
+-------------------
+1. Display the number of unique customers from table 'customers'.
+   PATH: /names/
+
+2. Display the number of compositions from table 'tracks'.
+   PATH: /tracks/
+
+3. Display compositions with specified genre from table 'tracks'.
+   PATH /tracks/<genre>
+
+4. Display columns 'name', 'length' from the table 'tracks'.
+   PATH: /tracks-sec/
+
+5. Display average value of length of all compositions of column 'TrackLength' from table 'tracks'.
+   Display overall length of all compositions of column 'TrackLength' from table 'tracks'.
+   PATH: /tracks-sec/statistics/
+
+
+!!! Do all tasks in the separated branch, create pull request and then merge with main.
+
+-----------------
+
+hw2_flask_maim.py - web application based on Flask
+database.py - module for working with database
+
+Folders:
+read README_flask
+templates/ for html templates
+         names.html - templates for task 1.
+         tracks_number.html - templates for task 2.
+         tracks_genre.html - templates for task 3.
+         tracks_sec.html - templates for task 4.
+         tracks_stat.html - templates for task 5.
+
+-----------------

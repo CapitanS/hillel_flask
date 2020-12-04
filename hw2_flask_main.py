@@ -4,6 +4,7 @@ from flask import Flask
 from faker import Faker
 from flask import render_template
 from numpy import mean
+from database_hw3 import exec_query
 
 
 app = Flask(__name__)
@@ -19,6 +20,7 @@ def hello_world() -> 'html':
                            )
 
 
+# Homework 2. Flask.
 # Task 1. Return information from requirements.txt
 @app.route('/requirements/')
 def get_requirements() -> 'html':
@@ -78,6 +80,69 @@ def cosmonauts_in_the_space() -> 'html':
                            the_title='Number of cosmonauts in the space at the moment.',
                            number_of_cosmonauts=number_of_cosmonauts,
                            the_style_url='../static/style.css'
+                           )
+
+
+# Homework 3. SQLite.
+# Task 1. Display the number unique customers from table 'customers' of db_hw3.sqlite3.
+@app.route('/names/')
+def get_unigue_names() -> 'html':
+    number_of_unique_customers = exec_query('SELECT COUNT(DISTINCT FirstName) FROM customers')
+    return render_template('names.html',
+                           the_title='Number of the unique customers',
+                           number_of_unique_customers=number_of_unique_customers[0][0],
+                           the_style_url='../static/style.css'
+                           )
+
+
+# Task 2. Display the number of compositions from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks/')
+def get_number_of_tracks() -> 'html':
+    number_of_tracks = exec_query('SELECT COUNT(TracksName) FROM tracks')
+    return render_template('tracks_number.html',
+                           the_title='Number of the compositions',
+                           number_of_tracks=number_of_tracks[0][0],
+                           the_style_url='../static/style.css'
+                           )
+
+
+# Task 3. Display compositions with specified genre from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks/<genre>')
+def get_genre_tracks(genre) -> 'html':
+    genre_list = ['Disco', 'Club', 'NewRock', 'RnB', 'Bass']
+    if genre in genre_list:
+        genre_tracks = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
+    else:
+        genre_tracks = [(f'No {genre} tracks.', 'At all!')]
+    return render_template('tracks_genre.html',
+                           the_title=f'{genre} compositions',
+                           genre_tracks=genre_tracks,
+                           the_style_url='../static/style.css'
+                           )
+
+
+# Task 4. Display compositions and their length from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks-sec/')
+def get_tracks_and_length() -> 'html':
+    tracks_and_length = exec_query('SELECT TracksName, TrackLength FROM tracks')
+    return render_template('tracks_sec.html',
+                           the_title='Compositions and their length',
+                           tracks_and_length=tracks_and_length,
+                           the_style_url='../static/style.css'
+                           )
+
+
+# Task 5. Display average value of length of all compositions and
+# overall length of all compositions from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks-sec/statistics/')
+def get_length_statistics() -> 'html':
+    average_length = exec_query('SELECT AVG(TrackLength) FROM tracks')
+    overall_length = exec_query('SELECT SUM(TrackLength) FROM tracks')
+    return render_template('tracks_stat.html',
+                           the_title='A little bit of statistics',
+                           average_length='{:.2f}'.format(average_length[0][0]),
+                           overall_length=overall_length[0][0],
+                           the_style_url='../../static/style.css'
                            )
 
 
