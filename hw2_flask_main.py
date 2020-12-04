@@ -4,6 +4,7 @@ from flask import Flask
 from faker import Faker
 from flask import render_template
 from numpy import mean
+from database_hw3 import exec_query
 
 
 app = Flask(__name__)
@@ -19,6 +20,7 @@ def hello_world() -> 'html':
                            )
 
 
+# Homework 2. Flask.
 # Task 1. Return information from requirements.txt
 @app.route('/requirements/')
 def get_requirements() -> 'html':
@@ -79,6 +81,20 @@ def cosmonauts_in_the_space() -> 'html':
                            number_of_cosmonauts=number_of_cosmonauts,
                            the_style_url='../static/style.css'
                            )
+
+
+# Homework 3. SQLite.
+# Task 1. Display the number unique customers from table 'customers' of db_hw3.sqlite3.
+@app.route('/names/')
+def get_unigue_names() -> 'html':
+    with open('requirements.txt') as r:
+        requirements = r.readlines()
+    return render_template('requirements.html',
+                           the_title='Requirements for this project',
+                           content=requirements,
+                           the_style_url='../static/style.css'
+                           )
+
 
 
 if __name__ == '__main__':
