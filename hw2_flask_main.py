@@ -95,6 +95,17 @@ def get_unigue_names() -> 'html':
                            )
 
 
+# Task 2. Display the number of compositions from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks/')
+def get_number_of_tracks() -> 'html':
+    number_of_tracks = exec_query('SELECT COUNT(TracksName) FROM tracks')
+    return render_template('tracks_number.html',
+                           the_title='Number of the compositions',
+                           number_of_tracks=number_of_tracks[0][0],
+                           the_style_url='../static/style.css'
+                           )
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

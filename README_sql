@@ -8,7 +8,7 @@ Preparation:
    Customers must be with unique names and the same.
 
    Create table 'tracks' in database 'db_hw3.sqlite3'.
-   Columns 'id', 'TrackName', 'genre', 'TrackLength' (in sec.).
+   Columns 'id', 'TracksName', 'genre', 'TrackLength' (in sec.).
    Add few rows with existing compositions in this table.
 
 -------------------
