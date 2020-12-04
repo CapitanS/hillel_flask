@@ -1,9 +1,28 @@
 Homework 3. SQLite.
 -------------------
 
-1. Return information from requirements.txt
-   PATH: /requirements/
+1. Create table 'customers' in database 'db_hw3.sqlite3'.
+   Columns 'id', 'FirstName', 'LastName'.
+   Add few rows with customers in this table
+   (customers must be with unique names and the same)
+   Display the number of unique customers.
+   PATH: /names/
 
+2. Create table 'tracks' in database 'db_hw3.sqlite3'.
+   Columns 'id', 'name', 'genre', 'length' (in sec.).
+   Add few rows with existing compositions in this table.
+   Display the number of compositions.
+   PATH: /tracks/
+
+3. Display compositions with specified genre.
+   PATH /tracks/<genre>
+
+4. Display columns 'name', 'length' from the table 'tracks'.
+   PATH: /tracks-sec/
+
+5. Display average value of all compositions of column 'length'.
+   Display overall length of all compositions of column 'length'.
+   PATH: /tracks-sec/statistics/
 
 
 !!! Do all tasks in the separated branch, create pull request and then merge with main.
@@ -15,14 +34,11 @@ database.py - module for working with database
 
 Folders:
 read README_flask
-
 templates/ for html templates
-         base.html - base templates
-         entry.html - main page
-         requirements.html - templates for task 1.
-         generate_users.html - templates for task 2.
-         mean.html - templates for task 3.
-         space.html - templates for task 4.
-
+         names.html - templates for task 1.
+         tracks_number.html - templates for task 2.
+         tracks_genre.html - templates for task 3.
+         tracks_sec.html - templates for task 4.
+         tracks_stat.html - templates for task 5.
 
 -----------------
