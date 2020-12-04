@@ -1,0 +1,28 @@
+Homework 3. SQLite.
+-------------------
+
+1. Return information from requirements.txt
+   PATH: /requirements/
+
+
+
+!!! Do all tasks in the separated branch, create pull request and then merge with main.
+
+-----------------
+
+hw2_flask_maim.py - web application based on Flask
+database.py - module for working with database
+
+Folders:
+read README_flask
+
+templates/ for html templates
+         base.html - base templates
+         entry.html - main page
+         requirements.html - templates for task 1.
+         generate_users.html - templates for task 2.
+         mean.html - templates for task 3.
+         space.html - templates for task 4.
+
+
+-----------------
