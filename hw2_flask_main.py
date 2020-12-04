@@ -109,7 +109,11 @@ def get_number_of_tracks() -> 'html':
 # Task 3. Display compositions with specified genre from table 'tracks' of db_hw3.sqlite3.
 @app.route('/tracks/<genre>')
 def get_genre_tracks(genre) -> 'html':
-    genre_tracks = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
+    genre_list = ['Disco', 'Club', 'NewRock', 'RnB', 'Bass']
+    if genre in genre_list:
+        genre_tracks = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
+    else:
+        genre_tracks = [(f'No {genre} tracks.', 'At all!')]
     return render_template('tracks_genre.html',
                            the_title=f'{genre} compositions',
                            genre_tracks=genre_tracks,
