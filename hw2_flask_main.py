@@ -87,15 +87,14 @@ def cosmonauts_in_the_space() -> 'html':
 # Task 1. Display the number unique customers from table 'customers' of db_hw3.sqlite3.
 @app.route('/names/')
 def get_unigue_names() -> 'html':
-    with open('requirements.txt') as r:
-        requirements = r.readlines()
-    return render_template('requirements.html',
-                           the_title='Requirements for this project',
-                           content=requirements,
+    number_of_unique_customers = exec_query('SELECT COUNT(DISTINCT FirstName) FROM customers')
+    return render_template('names.html',
+                           the_title='Number of the unique customers',
+                           number_of_unique_customers=number_of_unique_customers[0][0],
                            the_style_url='../static/style.css'
                            )
 
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
