@@ -9,7 +9,7 @@ def init_database():
     """
     Create database in current folder.
     Create table 'customers' with columns 'id', 'FirstName', 'LastName'.
-    Create table 'tracks' with columns 'id', 'name', 'genre', 'length'.
+    Create table 'tracks' with columns 'id', 'TracksName', 'genre', 'TrackLength'.
     """
     with sqlite3.connect(DEFAULT_PATH) as conn:
         with conn as cursor:
