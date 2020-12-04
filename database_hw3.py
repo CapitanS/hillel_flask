@@ -16,14 +16,14 @@ def init_database():
             cursor.execute(
                 """CREATE TABLE IF NOT EXISTS customers 
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                FirstName VARCHAR(255) UNIQUE NOT NULL,
+                FirstName VARCHAR(255) NOT NULL,
                 LastName VARCHAR(255) UNIQUE NOT NULL)"""
             )
             cursor.execute(
                 """CREATE TABLE IF NOT EXISTS tracks 
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                 TracksName VARCHAR(255) UNIQUE NOT NULL,
-                genre VARCHAR(255) UNIQUE NOT NULL,
+                genre VARCHAR(255) NOT NULL,
                 TrackLength FLOAT NOT NULL DEFAULT 0)"""
             )
 
