@@ -106,6 +106,22 @@ def get_number_of_tracks() -> 'html':
                            )
 
 
+# Task 3. Display compositions with specified genre from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks/<genre>')
+def get_genre_compositions(genre) -> 'html':
+    genre_composition = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
+    print(genre_composition)
+    return render_template('tracks_genre.html',
+                           the_title=f'{genre} compositions',
+                           genre_composition=genre_composition,
+                           the_style_url='../static/style.css'
+                           )
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
