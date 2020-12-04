@@ -128,6 +128,18 @@ def get_tracks_and_length() -> 'html':
                            )
 
 
+# Task 4. Display average value of length of all compositions and
+# overall length of all compositions from table 'tracks' of db_hw3.sqlite3.
+@app.route('/tracks-sec/statistics/')
+def get_length_statistics() -> 'html':
+    average_length = exec_query('SELECT AVG(TrackLength) FROM tracks')
+    overall_length = exec_query('SELECT SUM(TrackLength) FROM tracks')
+    return render_template('tracks_stat.html',
+                           the_title='A little bit of statistics',
+                           average_length='{:.2f}'.format(average_length[0][0]),
+                           overall_length=overall_length[0][0],
+                           the_style_url='../../static/style.css'
+                           )
 
 
 if __name__ == '__main__':

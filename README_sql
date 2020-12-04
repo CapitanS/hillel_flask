@@ -24,7 +24,7 @@ Preparation:
 4. Display columns 'name', 'length' from the table 'tracks'.
    PATH: /tracks-sec/
 
-5. Display average value of all compositions of column 'TrackLength' from table 'tracks'.
+5. Display average value of length of all compositions of column 'TrackLength' from table 'tracks'.
    Display overall length of all compositions of column 'TrackLength' from table 'tracks'.
    PATH: /tracks-sec/statistics/
 
