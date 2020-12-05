@@ -13,7 +13,7 @@ app = Flask(__name__)
 # Just main page!
 @app.route('/')
 @app.route('/index.html')
-def hello_world() -> 'html':
+def hello_world() -> str:
     return render_template('entry.html',
                            the_title='Flask welcomes',
                            the_style_url='static/style.css'
@@ -23,7 +23,7 @@ def hello_world() -> 'html':
 # Homework 2. Flask.
 # Task 1. Return information from requirements.txt
 @app.route('/requirements/')
-def get_requirements() -> 'html':
+def get_requirements() -> str:
     with open('requirements.txt') as r:
         requirements = r.readlines()
     return render_template('requirements.html',
@@ -36,7 +36,7 @@ def get_requirements() -> 'html':
 # Task 2. Display generated users and their emails.
 @app.route('/generate-users/')
 @app.route('/generate-users/<int:users_number>')
-def generate_users(users_number: int = 100) -> 'html':
+def generate_users(users_number: int = 100) -> str:
     users_with_emails = {}
     fake = Faker(['en_US'])
     for _ in range(users_number):
@@ -52,7 +52,7 @@ def generate_users(users_number: int = 100) -> 'html':
 
 # Task 3. Return mean height and weight from hw.csv.
 @app.route('/mean/')
-def get_mean_height_weight() -> 'html':
+def get_mean_height_weight() -> str:
     with open('files/hw.csv', newline='') as hw_csvfile:
         hw_reader = csv.DictReader(hw_csvfile)
         height_str = []
@@ -73,7 +73,7 @@ def get_mean_height_weight() -> 'html':
 
 # Task 4. Display number of cosmonauts in the space at the moment.
 @app.route('/space/')
-def cosmonauts_in_the_space() -> 'html':
+def cosmonauts_in_the_space() -> str:
     r = requests.get('http://api.open-notify.org/astros.json')
     number_of_cosmonauts = r.json()['number']
     return render_template('space.html',
@@ -86,7 +86,7 @@ def cosmonauts_in_the_space() -> 'html':
 # Homework 3. SQLite.
 # Task 1. Display the number unique customers from table 'customers' of db_hw3.sqlite3.
 @app.route('/names/')
-def get_unigue_names() -> 'html':
+def get_unigue_names() -> str:
     number_of_unique_customers = exec_query('SELECT COUNT(DISTINCT FirstName) FROM customers')
     return render_template('names.html',
                            the_title='Number of the unique customers',
@@ -97,7 +97,7 @@ def get_unigue_names() -> 'html':
 
 # Task 2. Display the number of compositions from table 'tracks' of db_hw3.sqlite3.
 @app.route('/tracks/')
-def get_number_of_tracks() -> 'html':
+def get_number_of_tracks() -> str:
     number_of_tracks = exec_query('SELECT COUNT(TracksName) FROM tracks')
     return render_template('tracks_number.html',
                            the_title='Number of the compositions',
@@ -108,10 +108,10 @@ def get_number_of_tracks() -> 'html':
 
 # Task 3. Display compositions with specified genre from table 'tracks' of db_hw3.sqlite3.
 @app.route('/tracks/<genre>')
-def get_genre_tracks(genre) -> 'html':
+def get_genre_tracks(genre) -> str:
     genre_list = ['Disco', 'Club', 'NewRock', 'RnB', 'Bass']
     if genre in genre_list:
-        genre_tracks = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=\'{genre}\'')
+        genre_tracks = exec_query(f'SELECT TracksName, genre FROM tracks WHERE genre=(?)', (genre))
     else:
         genre_tracks = [(f'No {genre} tracks.', 'At all!')]
     return render_template('tracks_genre.html',
@@ -123,7 +123,7 @@ def get_genre_tracks(genre) -> 'html':
 
 # Task 4. Display compositions and their length from table 'tracks' of db_hw3.sqlite3.
 @app.route('/tracks-sec/')
-def get_tracks_and_length() -> 'html':
+def get_tracks_and_length() -> str:
     tracks_and_length = exec_query('SELECT TracksName, TrackLength FROM tracks')
     return render_template('tracks_sec.html',
                            the_title='Compositions and their length',
@@ -135,7 +135,7 @@ def get_tracks_and_length() -> 'html':
 # Task 5. Display average value of length of all compositions and
 # overall length of all compositions from table 'tracks' of db_hw3.sqlite3.
 @app.route('/tracks-sec/statistics/')
-def get_length_statistics() -> 'html':
+def get_length_statistics() -> str:
     average_length = exec_query('SELECT AVG(TrackLength) FROM tracks')
     overall_length = exec_query('SELECT SUM(TrackLength) FROM tracks')
     return render_template('tracks_stat.html',
